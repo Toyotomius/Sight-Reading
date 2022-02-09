@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2021.2.4f1</UnityVersion>
@@ -56,6 +56,18 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Constants\TrebleClefConstants.cs" />
+    <Compile Include="Assets\Resources\Settings.cs" />
+    <Compile Include="Assets\Resources\DetectTest.cs" />
+    <Compile Include="Assets\Resources\GameFlow.cs" />
+    <Compile Include="Assets\Resources\FlashCards.cs" />
+    <Compile Include="Assets\Resources\Constants\GlobalConstants.cs" />
+    <Compile Include="Assets\Resources\GrandStaffFlashCard.cs" />
+    <Compile Include="Assets\Resources\Constants\BassClefConstants.cs" />
+    <Compile Include="Assets\Resources\Constants\GrandStaffConstants.cs" />
+    <Compile Include="Assets\Resources\ChangeMidiDevice.cs" />
+    <Compile Include="Assets\Resources\RegisterNotePress.cs" />
+    <Compile Include="Assets\Resources\IFlashCard.cs" />
     <Compile Include="Assets\Resources\Test.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -712,6 +724,12 @@
     </Reference>
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.4f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Minis">
+      <HintPath>Library\ScriptAssemblies\Minis.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
