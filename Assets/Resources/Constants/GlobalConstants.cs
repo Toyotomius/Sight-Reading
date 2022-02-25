@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Main.Assets.Resources.Global
 {
+
     public static class GlobalConstants
     {
         public static List<Type> AllFlashCardTypes = new List<Type>();
@@ -23,7 +24,8 @@ namespace Main.Assets.Resources.Global
                 "A", "B", "C", "D", "E", "F","G"
             };
 
-        public static Dictionary<string, bool> SettingBools = new Dictionary<string, bool>();
+        public static List<INotePicker> NotePickers = new List<INotePicker>();
+        public static List<Type> NotePickerTypes = new List<Type>();
         public static GameObject TrebleWithLedgerPrefab;
         public static Sprite WrongNote;
 
@@ -40,10 +42,14 @@ namespace Main.Assets.Resources.Global
 
             Canvas = GameObject.Find("Canvas");
 
-            var type = typeof(IFlashCard);
+            var flashType = typeof(IFlashCard);
             AllFlashCardTypes = System.Reflection.Assembly.GetExecutingAssembly()
                                    .GetTypes()
-                                   .Where(p => type.IsAssignableFrom(p) && !p.IsInterface).ToList();
+                                   .Where(p => flashType.IsAssignableFrom(p) && !p.IsInterface).ToList();
+            var notePickers = typeof(INotePicker);
+            NotePickerTypes = System.Reflection.Assembly.GetExecutingAssembly()
+                                   .GetTypes()
+                                   .Where(p => notePickers.IsAssignableFrom(p) && !p.IsInterface).ToList();
         }
     }
 }

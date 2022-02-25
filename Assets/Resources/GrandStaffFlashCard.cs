@@ -17,7 +17,8 @@ namespace Main.Assets.Resources
                 oldStaff.SetActive(false);
             }
 
-            var note = ChooseNote();
+            ChooseNotes choose = new();
+            var notes = choose.Pick("GrandStaffFlashCard");
             GameObject staff;
             if (includeLedgers)
             {
@@ -27,51 +28,53 @@ namespace Main.Assets.Resources
             {
                 staff = ReturnBlankCard();
             }
-
-            if (GrandStaffConstants.Duplicates.Contains(note))
+            foreach (var note in notes)
             {
-                // 0 Treble :: 1 bass clef
-                var coinFlip = UnityEngine.Random.Range(0, 2);
-                switch (coinFlip)
+                if (GrandStaffConstants.Duplicates.Contains(note))
                 {
-                    case 1:
-                        {
-                            try
+                    // 0 Treble :: 1 bass clef
+                    var coinFlip = UnityEngine.Random.Range(0, 2); // TODO: Refine for traids/7ths?
+                    switch (coinFlip)
+                    {
+                        case 1:
                             {
-                                staff.transform.Find("BassClef").transform.Find(note).GetComponent<Image>().sprite = Note;
-                                Debug.Log($"{note} in bass was changed to Note sprite");
+                                try
+                                {
+                                    staff.transform.Find("BassClef").transform.Find(note).GetComponent<Image>().sprite = Note;
+                                    Debug.Log($"{note} in bass was changed to Note sprite");
+                                }
+                                catch (NullReferenceException ex)
+                                {
+                                    Debug.Log($"{note} does not exist in the grand staff");
+                                }
+                                break;
                             }
-                            catch (NullReferenceException ex)
+                        default:
                             {
-                                Debug.Log($"{note} does not exist in the grand staff");
+                                try
+                                {
+                                    staff.transform.Find("TrebleClef").transform.Find(note).GetComponent<Image>().sprite = Note;
+                                    Debug.Log($"{note} in Treble was changed to Note sprite");
+                                }
+                                catch (NullReferenceException ex)
+                                {
+                                    Debug.Log($"{note} does not exist in the grand staff");
+                                }
+                                break;
                             }
-                            break;
-                        }
-                    default:
-                        {
-                            try
-                            {
-                                staff.transform.Find("TrebleClef").transform.Find(note).GetComponent<Image>().sprite = Note;
-                                Debug.Log($"{note} in Treble was changed to Note sprite");
-                            }
-                            catch (NullReferenceException ex)
-                            {
-                                Debug.Log($"{note} does not exist in the grand staff");
-                            }
-                            break;
-                        }
+                    }
                 }
-            }
-            else
-            {
-                try
+                else
                 {
-                    GameObject.Find(note).GetComponent<Image>().sprite = Note;
-                    Debug.Log($"{note} was changed to Note sprite");
-                }
-                catch (NullReferenceException ex)
-                {
-                    Debug.Log($"{note} does not exist in the grand staff");
+                    try
+                    {
+                        GameObject.Find(note).GetComponent<Image>().sprite = Note;
+                        Debug.Log($"{note} was changed to Note sprite");
+                    }
+                    catch (NullReferenceException ex)
+                    {
+                        Debug.Log($"{note} does not exist in the grand staff");
+                    }
                 }
             }
 
@@ -85,18 +88,6 @@ namespace Main.Assets.Resources
             {
                 GameObject.Destroy(oldStaff);
             }
-        }
-
-        private string ChooseNote()
-        {
-            var note = NoteLetters[UnityEngine.Random.Range(0, NoteLetters.Count)]
-                           + GrandStaffConstants.OctaveList[UnityEngine.Random.Range(0, GrandStaffConstants.OctaveList.Count)];
-            while (GrandStaffConstants.ExcludedNotes.Contains(note))
-            {
-                note = NoteLetters[UnityEngine.Random.Range(0, NoteLetters.Count)]
-                           + GrandStaffConstants.OctaveList[UnityEngine.Random.Range(0, GrandStaffConstants.OctaveList.Count)];
-            }
-            return note;
         }
 
         private GameObject ReturnBlankCard()

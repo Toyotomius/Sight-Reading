@@ -11,20 +11,14 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("BassClefFlashCard"))
-                {
-                    SettingBools.Add("BassClefFlashCard", IncludeBassClef);
-                }
-                return SettingBools["BassClefFlashCard"];
+
+                return GameSettings.IncludeBassClef;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("BassClefFlashCard"))
-                {
-                    SettingBools.Add("BassClefFlashCard", IncludeBassClef);
-                }
-                SettingBools["BassClefFlashCard"] = value;
+
+                GameSettings.IncludeBassClef = value;
             }
         }
 
@@ -32,20 +26,13 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("GrandStaffFlashCard"))
-                {
-                    SettingBools.Add("GrandStaffFlashCard", IncludeGrandStaff);
-                }
-                return SettingBools["GrandStaffFlashCard"];
+
+                return GameSettings.IncludeGrandStaff;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("GrandStaffFlashCard"))
-                {
-                    SettingBools.Add("GrandStaffFlashCard", IncludeGrandStaff);
-                }
-                SettingBools["GrandStaffFlashCard"] = value;
+                GameSettings.IncludeGrandStaff = value;
             }
         }
 
@@ -53,20 +40,12 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("IncludeIndividualNotes"))
-                {
-                    SettingBools.Add("IncludeIndividualNotes", IncludeIndividualNotes);
-                }
-                return SettingBools["IncludeIndividualNotes"];
+                return GameSettings.IncludeIndividualNotes;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("IncludeIndividualNotes"))
-                {
-                    SettingBools.Add("IncludeIndividualNotes", IncludeIndividualNotes);
-                }
-                SettingBools["IncludeIndividualNotes"] = value;
+                GameSettings.IncludeIndividualNotes = value;
             }
         }
 
@@ -74,20 +53,12 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("IncludeInversions"))
-                {
-                    SettingBools.Add("IncludeInversions", IncludeInversions);
-                }
-                return SettingBools["IncludeInversions"];
+                return GameSettings.IncludeInversions;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("IncludeInversions"))
-                {
-                    SettingBools.Add("IncludeInversions", IncludeInversions);
-                }
-                SettingBools["IncludeInversions"] = value;
+                GameSettings.IncludeInversions = value;
             }
         }
 
@@ -95,20 +66,12 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("IncludeLedgers"))
-                {
-                    SettingBools.Add("IncludeLedgers", IncludeLedgers);
-                }
-                return SettingBools["IncludeLedgers"];
+                return GameSettings.IncludeLedgers;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("IncludeLedgers"))
-                {
-                    SettingBools.Add("IncludeLedgers", IncludeLedgers);
-                }
-                SettingBools["IncludeLedgers"] = value;
+                GameSettings.IncludeLedgers = value;
             }
         }
 
@@ -116,20 +79,12 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("IncludeSevenths"))
-                {
-                    SettingBools.Add("IncludeSevenths", IncludeSevenths);
-                }
-                return SettingBools["IncludeSevenths"];
+                return GameSettings.IncludeSevenths;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("IncludeSevenths"))
-                {
-                    SettingBools.Add("IncludeSevenths", IncludeSevenths);
-                }
-                SettingBools["IncludeSevenths"] = value;
+                GameSettings.IncludeSevenths = value;
             }
         }
 
@@ -137,20 +92,12 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("TrebleCleffFlashCard"))
-                {
-                    SettingBools.Add("TrebleCleffFlashCard", IncludeTrebleClef);
-                }
-                return SettingBools["TrebleCleffFlashCard"];
+                return GameSettings.IncludeTrebleClef;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("TrebleCleffFlashCard"))
-                {
-                    SettingBools.Add("TrebleCleffFlashCard", IncludeTrebleClef);
-                }
-                SettingBools["TrebleCleffFlashCard"] = value;
+                GameSettings.IncludeTrebleClef = value;
             }
         }
 
@@ -158,20 +105,12 @@ namespace Main.Assets.Resources
         {
             get
             {
-                if (!SettingBools.ContainsKey("IncludeTriads"))
-                {
-                    SettingBools.Add("IncludeTriads", IncludeTriads);
-                }
-                return SettingBools["IncludeTriads"];
+                return GameSettings.IncludeTriads;
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("IncludeTriads"))
-                {
-                    SettingBools.Add("IncludeTriads", IncludeTriads);
-                }
-                SettingBools["IncludeTriads"] = value;
+                GameSettings.IncludeTriads = value;
             }
         }
 
@@ -180,9 +119,19 @@ namespace Main.Assets.Resources
             GlobalConstants.ClefFlashCards.Clear();
             foreach (var t in GlobalConstants.AllFlashCardTypes)
             {
-                if (SettingBools.ContainsKey(t.Name) && SettingBools[t.Name])
+                if (GameSettings.SettingBools.ContainsKey(t.Name) && GameSettings.SettingBools[t.Name])
                 {
                     GlobalConstants.ClefFlashCards.Add((IFlashCard)Activator.CreateInstance(t));
+                }
+            }
+            GlobalConstants.NotePickers.Clear();
+            foreach (var t in GlobalConstants.NotePickerTypes)
+            {
+                var name = t.Name.Replace("Picker", "");
+                var tempName = "Include" + name;
+                if (GameSettings.SettingBools.ContainsKey(tempName) && GameSettings.SettingBools[tempName])
+                {
+                    GlobalConstants.NotePickers.Add((INotePicker)Activator.CreateInstance(t));
                 }
             }
         }

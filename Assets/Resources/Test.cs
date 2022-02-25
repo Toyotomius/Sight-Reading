@@ -23,7 +23,7 @@ namespace SightReading
         {
             GrandStaffFlashCard gsCards = new();
 
-            gsCards.Create(SettingBools["IncludeLedgers"]);
+            gsCards.Create(GameSettings.IncludeLedgers);
         }
 
         public void Update()
@@ -35,6 +35,13 @@ namespace SightReading
         private void Start()
         {
             GlobalConstants.LoadConstants();
+
+            var settings = GlobalConstants.Canvas.GetComponent<Settings>();
+            GameSettings.IncludeGrandStaff = true;
+            GameSettings.IncludeLedgers = true;
+            GameSettings.IncludeTriads = true;
+            GameSettings.IncludeInversions = true;
+            settings.ApplySettings();
             GrandStaffFlashCard gsCards = new();
             gsCards.Create(true); //TODO: Just for testing.
         }

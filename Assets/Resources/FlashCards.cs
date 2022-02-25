@@ -25,7 +25,7 @@ namespace Main.Assets.Resources
                 GameObject.Destroy(transform.gameObject);
             }
             ClefFlashCards[UnityEngine.Random.Range(0, ClefFlashCards.Count)]
-                .Create(SettingBools["IncludeLedgers"]);
+                .Create(GameSettings.IncludeLedgers);
         }
     }
 }
