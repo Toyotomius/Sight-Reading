@@ -1,4 +1,5 @@
-﻿using Minis;
+﻿using Main.Assets.Resources.NoteSelectors;
+using Minis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Main.Assets.Resources.Global
     {
         public static List<Type> AllFlashCardTypes = new List<Type>();
         public static GameObject BassWithLedgerPrefab;
+        public static GameObject BassClefPrefab;
         public static GameObject Canvas;
         public static List<IFlashCard> ClefFlashCards = new List<IFlashCard>();
         public static Sprite CorrectNote;
@@ -38,6 +40,7 @@ namespace Main.Assets.Resources.Global
 
             TrebleWithLedgerPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/TrebleLedgers", typeof(GameObject));
             BassWithLedgerPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/BassLedgers", typeof(GameObject));
+            BassClefPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/BassClef", typeof(GameObject));
             GrandStaffWithLedgersPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/GrandStaffLedgers", typeof(GameObject));
 
             Canvas = GameObject.Find("Canvas");
