@@ -1,90 +1,15 @@
 using Main.Assets.Resources;
-using Main.Assets.Resources.Global;
+using Main.Assets.Resources.Constants;
+using Main.Assets.Resources.NoteSelectors;
 using NUnit.Framework;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace EditTests.NotePickTests
 {
     public class NotePickTests
     {
         // Note: Music intervals are lower inclusive: a fifth interval is C&G for example.
-
-        [Test]
-        public void FindSecondNote_Returns_NoteDownByThirdWhenNewNoteOctaveIsTooHigh()
-        {
-            var excludedNotes = new List<string>() { "Null" };
-            var octaveList = new List<string>() { "Null" };
-            var firstNote = "C4";
-            var secondNote = HelperMethods.FindSecondNote(excludedNotes, octaveList, firstNote);
-
-            Assert.AreEqual("A4", secondNote);
-        }
-
-        [Test]
-        public void FindSecondNote_Returns_NoteFromMajorThird()
-        {
-            var excludedNotes = new List<string>() { "Null" };
-            var octaveList = new List<string>() { "4" };
-            var firstNote = "A4";
-            var secondNote = HelperMethods.FindSecondNote(excludedNotes, octaveList, firstNote);
-
-            Assert.AreEqual("C4", secondNote);
-        }
-
-        [Test]
-        public void FindThirdNote_Returns_NoteFromFifthBelowWhenSecondNoteLowerThanFirst()
-        {
-            var excludedNotes = new List<string>() { "Null" };
-            var octaveList = new List<string>() { "4" };
-            var firstNote = "G4";
-            var secondNote = "E4";
-
-            var thirdNote = HelperMethods.FindThirdNote(excludedNotes, octaveList,
-                                                                firstNote, secondNote, true);
-            Assert.AreEqual("C4", thirdNote);
-        }
-
-        [Test]
-        public void FindThirdNote_Returns_NoteFromFifthInterval()
-        {
-            var excludedNotes = new List<string>() { "Null" };
-            var octaveList = new List<string>() { "4" };
-            var firstNote = "A4";
-            var secondNote = "C4";
-
-            var thirdNote = HelperMethods.FindThirdNote(excludedNotes, octaveList,
-                                                                firstNote, secondNote, true);
-
-            Assert.AreEqual("E4", thirdNote);
-        }
-        [Test]
-        public void FindThirdNote_Returns_LowerNoteWhenHigherNoteOctaveIsTooHigh()
-        {
-            var excludedNotes = new List<string>() { "Null" };
-            var octaveList = new List<string>() { "4" };
-            var firstNote = "E4";
-            var secondNote = "G4";
-
-            var thirdNote = HelperMethods.FindThirdNote(excludedNotes, octaveList,
-                                                                firstNote, secondNote, true);
-
-            Assert.AreEqual("C4", thirdNote);
-        }
-        [Test]
-        public void FIndThirdNote_Returns_LowerNoteWhenHigherNoteIsExcluded()
-        {
-            var excludedNotes = new List<string>() { "B5" };
-            var octaveList = new List<string>() { "4, 5" };
-            var firstNote = "E4";
-            var secondNote = "G4";
-
-            var thirdNote = HelperMethods.FindThirdNote(excludedNotes, octaveList,
-                                                                firstNote, secondNote, true);
-
-            Assert.AreEqual("C4", thirdNote);
-        }
 
         // Note: Music scale is A-G. G4 leads to A5.
         [Test]
@@ -125,13 +50,109 @@ namespace Tests
         }
 
         [Test]
+        public void SeventhsPicker_Returns_CorrectNotesFor1stInversionChord()
+        {
+            INotePicker seventhsPicker = new SeventhsPicker();
+            var lowNote = "B2";
+            var listOfNotes = seventhsPicker.PickNotes(lowNote, Inversions.First, 0, 0);
+
+            Assert.That(listOfNotes.Contains("B2") && listOfNotes.Contains("D2")
+                        && listOfNotes.Contains("F2") && listOfNotes.Contains("G2"));
+        }
+
+        [Test]
+        public void SeventhsPicker_Returns_CorrectNotesFor2ndInversionChord()
+        {
+            INotePicker seventhsPicker = new SeventhsPicker();
+            var lowNote = "B2";
+            var listOfNotes = seventhsPicker.PickNotes(lowNote, Inversions.Second, 0, 0);
+
+            Assert.That(listOfNotes.Contains("B2") && listOfNotes.Contains("D2")
+                        && listOfNotes.Contains("E2") && listOfNotes.Contains("G2"));
+        }
+
+        [Test]
+        public void SeventhsPicker_Returns_CorrectNotesFor3rdInversionChord()
+        {
+            INotePicker seventhsPicker = new SeventhsPicker();
+            var lowNote = "B2";
+            var listOfNotes = seventhsPicker.PickNotes(lowNote, Inversions.Third, 0, 0);
+
+            Assert.That(listOfNotes.Contains("B2") && listOfNotes.Contains("C2")
+                        && listOfNotes.Contains("E2") && listOfNotes.Contains("G2"));
+        }
+
+        [Test]
+        public void SeventhsPicker_Returns_CorrectNotesFor7thChord()
+        {
+            INotePicker seventhsPicker = new SeventhsPicker();
+            var lowNote = "B2";
+            var listOfNotes = seventhsPicker.PickNotes(lowNote, Inversions.None, 0, 0);
+
+            Assert.That(listOfNotes.Contains("B2") && listOfNotes.Contains("D2")
+                        && listOfNotes.Contains("F2") && listOfNotes.Contains("A3"));
+        }
+
+        [Test]
+        public void SeventhsPicker_Returns_ListOfCount4()
+        {
+            INotePicker seventhsPicker = new SeventhsPicker();
+            var lowNote = "B2";
+            var listOfNotes = seventhsPicker.PickNotes(lowNote, Inversions.None, 0, 0);
+
+            Assert.AreEqual(4, listOfNotes.Count);
+        }
+
+        [Test]
+        public void TriadPicker_Returns_CorrectFirstInversion()
+        {
+            INotePicker triadPicker = new TriadsPicker();
+            var lowNote = "B2";
+            var listOfNotes = triadPicker.PickNotes(lowNote, Inversions.First, 0, 0);
+
+            Assert.That(listOfNotes.Contains("B2") && listOfNotes.Contains("D2") && listOfNotes.Contains("G2"));
+        }
+
+        [Test]
+        public void TriadPicker_Returns_CorrectSecondInversion()
+        {
+            INotePicker triadPicker = new TriadsPicker();
+            var lowNote = "B2";
+            var listOfNotes = triadPicker.PickNotes(lowNote, Inversions.Second, 0, 0);
+
+            Assert.That(listOfNotes.Contains("B2") && listOfNotes.Contains("E2") && listOfNotes.Contains("G2"));
+        }
+
+        
+
+        [Test]
         public void TriadPicker_Returns_ListOfCount3()
         {
             INotePicker triadPicker = new TriadsPicker();
-            var fillerList = new List<string>() { "Null" };
-            var listOfNotes = triadPicker.PickNotes(fillerList, fillerList);
+            var lowNote = "A4";
+            var listOfNotes = triadPicker.PickNotes(lowNote, Inversions.None, 0, 0);
 
             Assert.That(listOfNotes.Count, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void TriadPicker_Returns_NewChordFromLowerAndUpperBounds()
+        {
+            INotePicker triadPicker = new TriadsPicker();
+            var lowNote = "A4";
+            var listOfNotes = triadPicker.PickNotes(lowNote, Inversions.None, 3, 3);
+
+            Assert.That(listOfNotes.Contains("C4") && listOfNotes.Contains("E4") && listOfNotes.Contains("G4"));
+        }
+
+        [Test]
+        public void TriadPicker_Returns_NewChordReturnsNotesAtHigherOctave()
+        {
+            INotePicker triadPicker = new TriadsPicker();
+            var lowNote = "A4";
+            var listOfNotes = triadPicker.PickNotes(lowNote, Inversions.None, 4, 4);
+
+            Assert.That(listOfNotes.Contains("D4") && listOfNotes.Contains("F4") && listOfNotes.Contains("A5"));
         }
     }
 }
