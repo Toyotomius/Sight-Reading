@@ -46,7 +46,7 @@ namespace Main.Assets.Resources.Global
                 }
             }
             string thirdNote;
-            if (secondNote[0] < firstNote[0] && secondNote[1] <= firstNote[1])
+            if (secondNote[1] < firstNote[1] || (secondNote[0] < firstNote[0] && secondNote[1] == firstNote[1]))
             {
                 if (inversions)
                 {
@@ -108,6 +108,25 @@ namespace Main.Assets.Resources.Global
                 }
             }
             return thirdNote;
+        }
+        public static string FindFourthNote(List<string> excludedNotes, List<string> octaveList, string firstNote, string thirdNote)
+        {
+            string fourthNote;
+
+            if (thirdNote[1] < firstNote[1] || (thirdNote[0] < firstNote[0] && thirdNote[1] == firstNote[1]))
+            {
+                fourthNote = thirdNote.NoteFromInterval(-3);
+            }
+            else
+            {
+                fourthNote = thirdNote.NoteFromInterval(3);
+                if (excludedNotes.Contains(fourthNote) || !octaveList.Contains(fourthNote[1].ToString()))
+                {
+                    fourthNote = firstNote.NoteFromInterval(-3);
+                }
+            }
+
+            return fourthNote;
         }
     }
 }

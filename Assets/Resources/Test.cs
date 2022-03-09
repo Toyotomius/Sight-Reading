@@ -21,9 +21,8 @@ namespace SightReading
 
         public void GenerateNewFlashCard()
         {
-            GrandStaffFlashCard gsCards = new();
-
-            gsCards.Create(GameSettings.IncludeLedgers);
+            GlobalConstants.ClefFlashCards[UnityEngine.Random.Range(0, GlobalConstants.ClefFlashCards.Count)]
+                .Create();
         }
 
         public void Update()
@@ -37,13 +36,18 @@ namespace SightReading
             GlobalConstants.LoadConstants();
 
             var settings = GlobalConstants.Canvas.GetComponent<Settings>();
-            GameSettings.IncludeGrandStaff = true;
+            GameSettings.IncludeBassClef = true;
             GameSettings.IncludeLedgers = true;
-            GameSettings.IncludeTriads = true;
+            GameSettings.IncludeSevenths = true;
             GameSettings.IncludeInversions = true;
+            GameSettings.IncludeIndividualNotes = true;
+            GameSettings.IncludeTriads = true;
             settings.ApplySettings();
-            GrandStaffFlashCard gsCards = new();
-            gsCards.Create(true); //TODO: Just for testing.
+
+            GlobalConstants.ClefFlashCards[UnityEngine.Random.Range(0, GlobalConstants.ClefFlashCards.Count)]
+                .Create();
+            //GrandStaffFlashCard gsCards = new();
+            //gsCards.Create(true); //TODO: Just for testing.
         }
     }
 }

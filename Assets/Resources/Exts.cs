@@ -14,7 +14,7 @@ namespace Main.Assets.Resources
             {
                 interval -= 1;
             }
-            else
+            if (interval < 0)
             {
                 interval += 1;
             }

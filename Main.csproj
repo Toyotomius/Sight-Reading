@@ -60,20 +60,29 @@
     <Compile Include="Assets\Resources\Settings.cs" />
     <Compile Include="Assets\Resources\DetectTest.cs" />
     <Compile Include="Assets\Resources\GameFlow.cs" />
-    <Compile Include="Assets\Resources\FlashCards.cs" />
+    <Compile Include="Assets\Resources\Flashcards\FlashCards.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\BassClefNoteSelector.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\TriadsPicker.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\IndividualNotesPicker.cs" />
     <Compile Include="Assets\Resources\Constants\GameSettings.cs" />
     <Compile Include="Assets\Resources\Exts.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\INotePicker.cs" />
     <Compile Include="Assets\Resources\ChooseNotes.cs" />
+    <Compile Include="Assets\Resources\HelperMethods.cs" />
     <Compile Include="Assets\Resources\Constants\GlobalConstants.cs" />
-    <Compile Include="Assets\Resources\GrandStaffFlashCard.cs" />
+    <Compile Include="Assets\Resources\Flashcards\GrandStaffFlashCard.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\GrandStaffNoteSelector.cs" />
     <Compile Include="Assets\Resources\Constants\BassClefConstants.cs" />
     <Compile Include="Assets\Resources\Constants\GrandStaffConstants.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\Inversions.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\INoteSelector.cs" />
     <Compile Include="Assets\Resources\ChangeMidiDevice.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\SeventhsPicker.cs" />
     <Compile Include="Assets\Resources\RegisterNotePress.cs" />
+    <Compile Include="Assets\Resources\Flashcards\OldStaff.cs" />
     <Compile Include="Assets\Resources\IFlashCard.cs" />
+    <Compile Include="Assets\Resources\Flashcards\BassClefFlashCard.cs" />
     <Compile Include="Assets\Resources\Test.cs" />
-    <Compile Include="Assets\Resources\INotePicker.cs" />
-    <Compile Include="Assets\Resources\HelperMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Main.asmdef" />

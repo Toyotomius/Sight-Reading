@@ -1,4 +1,5 @@
 ﻿using Main.Assets.Resources.Global;
+using Main.Assets.Resources.NoteSelectors;
 using System;
 using UnityEngine;
 using static Main.Assets.Resources.Global.GlobalConstants;

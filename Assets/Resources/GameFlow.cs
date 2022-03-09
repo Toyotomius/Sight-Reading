@@ -19,7 +19,7 @@ namespace Main.Assets.Resources
 
         public void NewFlashCard()
         {
-            ClefFlashCards[Random.Range(0, ClefFlashCards.Count)].Create(settingsScript.IncludeLedgers);
+            ClefFlashCards[Random.Range(0, ClefFlashCards.Count)].Create();
         }
     }
 }

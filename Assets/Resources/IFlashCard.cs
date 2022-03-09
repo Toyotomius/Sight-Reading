@@ -2,6 +2,6 @@
 {
     public interface IFlashCard
     {
-        public void Create(bool includeLedgers);
+        public void Create();
     }
 }
