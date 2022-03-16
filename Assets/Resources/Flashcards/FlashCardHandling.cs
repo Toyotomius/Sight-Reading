@@ -71,12 +71,19 @@ namespace Main.Assets.Resources.Flashcards
 
         public void SetSprites(List<string> notes, GameObject staff, bool isGrandStaff)
         {
+            bool coinFlipped = false;
+            int coinFlip = 0;
             foreach (var note in notes)
             {
                 if (GrandStaffConstants.Duplicates.Contains(note))
                 {
                     // 0 Treble :: 1 bass clef
-                    var coinFlip = UnityEngine.Random.Range(0, 2); // TODO: Refine for traids/7ths?
+                    if (!coinFlipped)
+                    {
+                        coinFlip = UnityEngine.Random.Range(0, 2);
+                        coinFlipped = true;
+                    }
+                    // TODO: Refine for traids/7ths?
                     switch (coinFlip)
                     {
                         case 1:
@@ -124,7 +131,7 @@ namespace Main.Assets.Resources.Flashcards
             {
                 Transform lastNote = null;
 
-                for (int i = 0; i < t.childCount - 2; i++)
+                for (int i = 0; i <= t.childCount - 2; i++)
                 {
                     var note = t.GetChild(i);
                     var nextNote = t.GetChild(i + 1);
@@ -132,13 +139,15 @@ namespace Main.Assets.Resources.Flashcards
                     if (note.GetComponent<Image>().sprite == Note)
                     {
                         lastNote = note;
+
+                        if (nextNote.GetComponent<Image>().sprite == Note)
+                        {
+                            note.localPosition = new Vector3(80, note.localPosition.y, note.localPosition.z);
+                        }
                     }
-                    if (note.GetComponent<Image>().sprite == Note && nextNote.GetComponent<Image>().sprite == Note)
-                    {
-                        note.localPosition = new Vector3(80, note.localPosition.y, note.localPosition.z);
-                    }
+                    
                 }
-                if (lastNote is object)
+                if (lastNote is object && lastNote.GetSiblingIndex() != 0)
                 {
                     var prevNote = t.GetChild(lastNote.GetSiblingIndex() - 1);
 
