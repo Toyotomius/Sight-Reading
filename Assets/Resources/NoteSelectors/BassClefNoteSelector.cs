@@ -49,7 +49,7 @@ namespace Main.Assets.Resources
                         {
                             return picker.PickNotes(lowestNote, Inversions.None, 0, WithLedgerUpperBound);
                         }
-                        return picker.PickNotes(lowestNote, Inversions.None, 7, NoLedgerUpperBound);
+                        return picker.PickNotes(lowestNote, Inversions.None, 0, NoLedgerUpperBound);
                     }
                 case "SeventhsPicker":
                     {
@@ -101,7 +101,7 @@ namespace Main.Assets.Resources
                             return picker.PickNotes(lowestNote, Inversions.None, 0,
                                                     SeventhsWithLedgerUpperBound);
                         }
-                        return picker.PickNotes(lowestNote, Inversions.None, 7,
+                        return picker.PickNotes(lowestNote, Inversions.None, 0,
                                                 SeventhsNoLedgerUpperBound);
                     }
                 case "IndividualNotesPicker":

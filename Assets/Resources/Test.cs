@@ -36,12 +36,12 @@ namespace SightReading
             GlobalConstants.LoadConstants();
 
             var settings = GlobalConstants.Canvas.GetComponent<Settings>();
-            GameSettings.IncludeBassClef = true;
+            GameSettings.IncludeGrandStaff = true;
             GameSettings.IncludeLedgers = true;
             GameSettings.IncludeSevenths = true;
             GameSettings.IncludeInversions = true;
-            GameSettings.IncludeIndividualNotes = true;
-            GameSettings.IncludeTriads = true;
+            GameSettings.IncludeIndividualNotes = false;
+            GameSettings.IncludeTriads = false;
             settings.ApplySettings();
 
             GlobalConstants.ClefFlashCards[UnityEngine.Random.Range(0, GlobalConstants.ClefFlashCards.Count)]
