@@ -2,7 +2,6 @@
 using Main.Assets.Resources.NoteSelectors;
 using System;
 using UnityEngine;
-using static Main.Assets.Resources.Global.GlobalConstants;
 
 namespace Main.Assets.Resources
 {
@@ -12,13 +11,11 @@ namespace Main.Assets.Resources
         {
             get
             {
-
                 return GameSettings.IncludeBassClef;
             }
 
             set
             {
-
                 GameSettings.IncludeBassClef = value;
             }
         }
@@ -27,7 +24,6 @@ namespace Main.Assets.Resources
         {
             get
             {
-
                 return GameSettings.IncludeGrandStaff;
             }
 
