@@ -36,7 +36,19 @@ namespace Main.Assets.Resources
                     }
                 case "TrebleClefFlashCard":
                     {
-                        return new List<string>();
+                        INoteSelector noteSelector = new TrebleClefNoteSelector();
+                        if (GameSettings.IncludeLedgers)
+                        {
+                            var lowestNote = "E3";
+
+                            return noteSelector.SelectNotes(picker, lowestNote);
+                        }
+                        else
+                        {
+                            var lowestNote = "D4";
+
+                            return noteSelector.SelectNotes(picker, lowestNote);
+                        }
                     }
                 default: return new List<string>();
             }

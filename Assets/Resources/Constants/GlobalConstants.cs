@@ -29,6 +29,7 @@ namespace Main.Assets.Resources.Global
         public static List<INotePicker> NotePickers = new List<INotePicker>();
         public static List<Type> NotePickerTypes = new List<Type>();
         public static GameObject TrebleWithLedgerPrefab;
+        public static GameObject TrebleClefPrefab;
         public static Sprite WrongNote;
 
         public static void LoadConstants()
@@ -39,6 +40,7 @@ namespace Main.Assets.Resources.Global
             Empty = UnityEngine.Resources.Load<Sprite>("Sprites/Empty");
 
             TrebleWithLedgerPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/TrebleLedgers", typeof(GameObject));
+            TrebleClefPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/TrebleClef", typeof(GameObject));
             BassWithLedgerPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/BassLedgers", typeof(GameObject));
             BassClefPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/BassClef", typeof(GameObject));
             GrandStaffWithLedgersPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Sheet Prefab/GrandStaffLedgers", typeof(GameObject));

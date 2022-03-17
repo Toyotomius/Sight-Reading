@@ -60,6 +60,7 @@
     <Compile Include="Assets\Resources\Constants\TrebleClefConstants.cs" />
     <Compile Include="Assets\Resources\Settings.cs" />
     <Compile Include="Assets\Resources\DetectTest.cs" />
+    <Compile Include="Assets\Resources\NoteSelectors\TrebleClefNoteSelector.cs" />
     <Compile Include="Assets\Resources\GameFlow.cs" />
     <Compile Include="Assets\Resources\Flashcards\FlashCards.cs" />
     <Compile Include="Assets\Resources\NoteSelectors\BassClefNoteSelector.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Resources\NoteSelectors\Inversions.cs" />
     <Compile Include="Assets\Resources\NoteSelectors\INoteSelector.cs" />
     <Compile Include="Assets\Resources\ChangeMidiDevice.cs" />
+    <Compile Include="Assets\Resources\Flashcards\TrebleClefFlashCard.cs" />
     <Compile Include="Assets\Resources\NoteSelectors\SeventhsPicker.cs" />
     <Compile Include="Assets\Resources\RegisterNotePress.cs" />
     <Compile Include="Assets\Resources\Flashcards\OldStaff.cs" />

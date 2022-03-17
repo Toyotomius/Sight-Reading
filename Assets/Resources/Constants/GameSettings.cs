@@ -136,20 +136,20 @@ namespace Main.Assets.Resources.Global
         {
             get
             {
-                if (!SettingBools.ContainsKey("TrebleCleffFlashCard"))
+                if (!SettingBools.ContainsKey("TrebleClefFlashCard"))
                 {
-                    SettingBools.Add("TrebleCleffFlashCard", false);
+                    SettingBools.Add("TrebleClefFlashCard", false);
                 }
-                return SettingBools["TrebleCleffFlashCard"];
+                return SettingBools["TrebleClefFlashCard"];
             }
 
             set
             {
-                if (!SettingBools.ContainsKey("TrebleCleffFlashCard"))
+                if (!SettingBools.ContainsKey("TrebleClefFlashCard"))
                 {
-                    SettingBools.Add("TrebleCleffFlashCard", false);
+                    SettingBools.Add("TrebleClefFlashCard", false);
                 }
-                SettingBools["TrebleCleffFlashCard"] = value;
+                SettingBools["TrebleClefFlashCard"] = value;
             }
         }
 

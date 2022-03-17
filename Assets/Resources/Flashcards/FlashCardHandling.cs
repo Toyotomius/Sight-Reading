@@ -52,19 +52,23 @@ namespace Main.Assets.Resources.Flashcards
                     if (note.GetComponent<Image>().sprite == Note)
                     {
                         lastNote = note;
-                    }
-                    if (note.GetComponent<Image>().sprite == Note && nextNote.GetComponent<Image>().sprite == Note)
-                    {
-                        note.localPosition = new Vector3(80, note.localPosition.y, note.localPosition.z);
+
+                        if (nextNote.GetComponent<Image>().sprite == Note)
+                        {
+                            note.localPosition = new Vector3(80, note.localPosition.y, note.localPosition.z);
+                        }
                     }
                 }
 
-                var prevNote = t.GetChild(lastNote.GetSiblingIndex() - 1);
-
-                if (prevNote.GetComponent<Image>().sprite == Note)
+                if (lastNote is object && lastNote.GetSiblingIndex() - 1 >= 0)
                 {
-                    lastNote.localPosition = new Vector3(-80, lastNote.localPosition.y, lastNote.localPosition.z);
-                    prevNote.localPosition = new Vector3(0, prevNote.localPosition.y, prevNote.localPosition.z);
+                    var prevNote = t.GetChild(lastNote.GetSiblingIndex() - 1);
+
+                    if (prevNote.GetComponent<Image>().sprite == Note)
+                    {
+                        lastNote.localPosition = new Vector3(-80, lastNote.localPosition.y, lastNote.localPosition.z);
+                        prevNote.localPosition = new Vector3(0, prevNote.localPosition.y, prevNote.localPosition.z);
+                    }
                 }
             }
         }
@@ -83,6 +87,7 @@ namespace Main.Assets.Resources.Flashcards
                         coinFlip = UnityEngine.Random.Range(0, 2);
                         coinFlipped = true;
                     }
+
                     // TODO: Refine for traids/7ths?
                     switch (coinFlip)
                     {
@@ -145,7 +150,6 @@ namespace Main.Assets.Resources.Flashcards
                             note.localPosition = new Vector3(80, note.localPosition.y, note.localPosition.z);
                         }
                     }
-                    
                 }
                 if (lastNote is object && lastNote.GetSiblingIndex() != 0)
                 {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Main.Assets.Resources.Flashcards
 {
-    public class BassClefFlashCard : IFlashCard
+    public class TrebleClefFlashCard : IFlashCard
     {
         public void Create()
         {
@@ -11,18 +11,18 @@ namespace Main.Assets.Resources.Flashcards
             GameObject oldStaff = getOldStaff.HideOldStaff();
 
             ChooseNotes choose = new();
-            var notes = choose.Pick("BassClefFlashCard");
+            var notes = choose.Pick("TrebleClefFlashCard");
             GameObject staff;
 
             FlashCardHandling cardHandling = new();
 
             if (GameSettings.IncludeLedgers)
             {
-                staff = cardHandling.ReturnBlankCard(GlobalConstants.BassWithLedgerPrefab);
+                staff = cardHandling.ReturnBlankCard(GlobalConstants.TrebleWithLedgerPrefab);
             }
             else
             {
-                staff = cardHandling.ReturnBlankCard(GlobalConstants.BassClefPrefab);
+                staff = cardHandling.ReturnBlankCard(GlobalConstants.TrebleClefPrefab);
             }
 
             cardHandling.SetSprites(notes, staff);

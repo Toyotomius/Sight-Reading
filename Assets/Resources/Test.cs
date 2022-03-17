@@ -40,8 +40,10 @@ namespace SightReading
             GameSettings.IncludeLedgers = true;
             GameSettings.IncludeSevenths = true;
             GameSettings.IncludeInversions = true;
-            GameSettings.IncludeIndividualNotes = false;
-            GameSettings.IncludeTriads = false;
+            GameSettings.IncludeIndividualNotes = true;
+            GameSettings.IncludeTriads = true;
+            GameSettings.IncludeBassClef = true;
+            GameSettings.IncludeTrebleClef = true;
             settings.ApplySettings();
 
             GlobalConstants.ClefFlashCards[UnityEngine.Random.Range(0, GlobalConstants.ClefFlashCards.Count)]
