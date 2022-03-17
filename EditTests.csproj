@@ -59,6 +59,7 @@
     <Compile Include="Assets\Resources\EditTests\BassClefNotePickTests.cs" />
     <Compile Include="Assets\Resources\EditTests\GrandStaffNotePickTests.cs" />
     <Compile Include="Assets\Resources\EditTests\NotePickTests.cs" />
+    <Compile Include="Assets\Resources\EditTests\TrebleClefNotePickTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\EditTests\EditTests.asmdef" />

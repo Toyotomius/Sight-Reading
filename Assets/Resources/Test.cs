@@ -36,13 +36,13 @@ namespace SightReading
             GlobalConstants.LoadConstants();
 
             var settings = GlobalConstants.Canvas.GetComponent<Settings>();
-            GameSettings.IncludeGrandStaff = true;
-            GameSettings.IncludeLedgers = true;
+            GameSettings.IncludeGrandStaff = false;
+            GameSettings.IncludeLedgers = false;
             GameSettings.IncludeSevenths = true;
             GameSettings.IncludeInversions = true;
-            GameSettings.IncludeIndividualNotes = true;
-            GameSettings.IncludeTriads = true;
-            GameSettings.IncludeBassClef = true;
+            GameSettings.IncludeIndividualNotes = false;
+            GameSettings.IncludeTriads = false;
+            GameSettings.IncludeBassClef = false;
             GameSettings.IncludeTrebleClef = true;
             settings.ApplySettings();
 

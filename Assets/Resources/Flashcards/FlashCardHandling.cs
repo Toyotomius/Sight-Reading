@@ -44,7 +44,7 @@ namespace Main.Assets.Resources.Flashcards
             {
                 Transform lastNote = null;
 
-                for (int i = 0; i < t.childCount - 2; i++)
+                for (int i = 0; i <= t.childCount - 2; i++)
                 {
                     var note = t.GetChild(i);
                     var nextNote = t.GetChild(i + 1);

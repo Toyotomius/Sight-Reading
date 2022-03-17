@@ -89,7 +89,7 @@ namespace Main.Assets.Resources
                                         return picker.PickNotes(lowestNote, Inversions.First, 0,
                                                                 SeventhsWithLedgerInversionsUpperBound);
                                     }
-                                    return picker.PickNotes(lowestNote, Inversions.First, 0,
+                                    return picker.PickNotes(lowestNote, Inversions.First, SeventhsNoLegerInversionsUpperBound,
                                                             SeventhsNoLegerInversionsUpperBound);
                                 }
                             }
